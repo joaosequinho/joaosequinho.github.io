@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Authentication</title>
+  </head>
+  <body>
+    <script>
+      // Obtenha o URL atual da página
+      var url = window.location.href;
+
+      // Verifique se o URL contém o código de autorização
+      if (url.indexOf("?code=") !== -1) {
+
+        // Divida o URL em duas partes usando o ponto de interrogação como separador
+        var parts = url.split("?");
+
+        // Obtenha o código de autorização a partir da segunda parte do URL
+        var code = parts[1].split("=")[1];
+
+        // Redirecione de volta para a aplicação iOS usando o URL de redirecionamento personalizado
+        window.location.href = "myapp://auth?code=" + code;
+      }
+    </script>
+  </body>
 </html>
